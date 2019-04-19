@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <contextName>six.core.landing</contextName>
+    <property name="consoleFormat" value="%contextName %d{HH:mm:ss.SSS} [%thread] %-5level %c:%L- %msg%n" />
+    <property name="fileout.logdir" value="/logdir/"/>
+
+    <appender name="CONSOLEOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${consoleFormat}</pattern>
+        </layout>
+    </appender>
+    <appender name="FILEOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+    </appender>
+    <!--一级节点控制输出级别和输出目录Trace,Debug,Info,Warn,Error,Fatal,Off-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLEOUT" />
+    </root>
+
+</configuration>

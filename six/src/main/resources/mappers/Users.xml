@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.six.landing.dao.UsersDao">
+
+    <resultMap id="resumeMapper" type="com.six.landing.domian.User">
+        <id column="Id" property="id"></id>
+        <result column="UserName" property="userName"/>
+        <result column="Password" property="password"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.six.landing.domian.User">
+        insert into Users(UserName,Password) values (#{userName},#{password})
+    </insert>
+
+    <select id="findByUserName" parameterType="java.lang.String" resultType="com.six.landing.domian.User">
+        select u.UserName,u.Password,r.RolesName,r.Flag from Users u
+        inner join User_Roles ur on u.Id=ur.User_Id
+        inner join Roles r on ur.Roles_Id=r.Id
+        where u.UserName=#{name}
+    </select>
+
+</mapper>
